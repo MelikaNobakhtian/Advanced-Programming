@@ -52,11 +52,6 @@ namespace A3.Tests
          return files.ToArray();
          }
 
-[TestMethod()]
-        public void MainTest()
-        {
-            Assert.Fail();
-        }
 
         [TestMethod()]
         public void CaculateLengthTest()

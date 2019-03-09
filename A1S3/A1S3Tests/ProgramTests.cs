@@ -11,11 +11,7 @@ namespace A1S3.Tests
     [TestClass()]
     public class ProgramTests
     {
-        [TestMethod()]
-        public void MainTest()
-        {
-            Assert.Fail();
-        }
+       
 
         [TestMethod()]
         public void Q1_GetWordsTest()
