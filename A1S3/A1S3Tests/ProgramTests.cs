@@ -20,7 +20,7 @@ namespace A1S3.Tests
         [TestMethod()]
         public void Q1_GetWordsTest()
         {
-           string[] functionresult=Program.Q1_GetWords(@"..\Q1.txt");
+           string[] functionresult=Program.Q1_GetWords(@"..\..\..\Q1.txt");
             string[] expectedresult = { "happiness", "hope", "God", "smile","friend", "family", "good", "brave" };
             CollectionAssert.AreEqual(functionresult, expectedresult);
 
