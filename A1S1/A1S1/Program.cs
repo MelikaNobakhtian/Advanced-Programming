@@ -11,16 +11,17 @@ namespace A3
         {
         public static void Main(string[] args)
             {
+            
             }
-        public int CaculateLength(string str)
+        public static int CaculateLength(string str)
             {
-            // Write your code here and remove next line
+           
             return str.Length;
             }
         
-        public int LetterCount(string str)
+        public static int LetterCount(string str)
             {
-            // Write your code here and remove next line
+            
             int num = 0;
             foreach(char letter in str)
             {
@@ -31,11 +32,11 @@ namespace A3
             return num;
             }
         
-        public int LineCount(string str)
+        public static int LineCount(string str)
             {
-            // Write your code here and remove next line
+            
             string[] lines = str.Split('\n');
-            return lines.Length;
+            return lines.Length-1;
             }
         
         public static int FileLineCount(string filePath)
@@ -47,9 +48,22 @@ namespace A3
         
         public static string[] ListFiles(string dirPath)
             {
-            // Write your code here and remove next line
-            
-            return Directory.GetFiles(dirPath);
+            string[] files= Directory.GetFiles(dirPath);
+            int length = files.Length;
+            string[] sortfile = new string[length];
+            for(int i=0;i<length; i++)
+            {
+                for(int j = 0; j < length; j++)
+                {
+                    if (files[j].Contains($"file{i}.txt"))
+                    {
+                        sortfile[i] = files[j];
+                        break;
+                    }
+                }
+            }
+
+            return sortfile;
             }
         
         public static double FileSize(string filePath)

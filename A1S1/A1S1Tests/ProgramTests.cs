@@ -30,19 +30,27 @@ namespace A3.Tests
 
         private static string[] GetTestDir(out string tmpDir)
 
-        {
-        tmpDir = Path.GetTempFileName();
-        Directory.CreateDirectory(tmpDir);
+     {
+         tmpDir = Path.GetTempFileName();
+         if (File.Exists(tmpDir))
+            File.Delete(tmpDir);
+
+        if (!Directory.Exists(tmpDir))
+            Directory.CreateDirectory(tmpDir);
+        else
+            foreach (string file in Directory.GetFiles(tmpDir))
+                File.Delete(file);
+
          int rndNum = new Random(0).Next(10, 20);
-        List<string> files = new List<string>();
-        for (int i=0; i<rndNum; i++)
+         List<string> files = new List<string>();
+         for (int i=0; i<rndNum; i++)
          {
-            string fileName = Path.Combine(tmpDir, $"file{i}.txt");
-            File.WriteAllText(fileName, $"file{i}.txt content");
-            files.Add(fileName);
-         }
+             string fileName = Path.Combine(tmpDir, $"file{i}.txt");
+             File.WriteAllText(fileName, $"file{i}.txt content");
+             files.Add(fileName);
+        }
          return files.ToArray();
- }
+         }
 
 [TestMethod()]
         public void MainTest()
@@ -53,19 +61,28 @@ namespace A3.Tests
         [TestMethod()]
         public void CaculateLengthTest()
         {
-            Assert.Fail();
+            int expectedresult = 16;
+            int functionresult = Program.CaculateLength("Hello my friend!");
+            Assert.AreEqual(expectedresult, functionresult);
         }
 
         [TestMethod()]
         public void LetterCountTest()
         {
-            Assert.Fail();
+            int expectedresult = 5;
+            int functionresult = Program.LetterCount("Why me??");
+            Assert.AreEqual(expectedresult, functionresult);
         }
 
         [TestMethod()]
         public void LineCountTest()
         {
-           
+            int expectedresult = 4;
+            int functionresult = Program.LineCount("stop thinking" +'\n'+
+                '\n'+"about what"+
+                '\n'+"others thinking"+
+                '\n'+ "about you");
+            Assert.AreEqual(expectedresult, functionresult);
         }
 
         [TestMethod()]
@@ -86,7 +103,7 @@ namespace A3.Tests
             string tmpdir;
             string[] expectedresult = GetTestDir(out tmpdir);
             string[] functionresult = Program.ListFiles(tmpdir);
-            Assert.AreEqual(expectedresult, functionresult);
+            CollectionAssert.AreEqual(expectedresult, functionresult);
         }
 
         [TestMethod()]

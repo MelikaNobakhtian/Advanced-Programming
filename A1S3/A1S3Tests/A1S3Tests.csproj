@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B84CACD6-512D-4234-B0F0-FA55E329466D}</ProjectGuid>
+    <ProjectGuid>{D93AE010-F758-46EC-B75A-879308C4F976}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>A0Tests</RootNamespace>
-    <AssemblyName>A0Tests</AssemblyName>
+    <RootNamespace>A1S3Tests</RootNamespace>
+    <AssemblyName>A1S3Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\A0\A0.csproj">
-      <Project>{D7513F01-E498-4E9D-8AD2-3605B6781AC0}</Project>
-      <Name>A0</Name>
+    <ProjectReference Include="..\A1S3\A1S3.csproj">
+      <Project>{55DF0A8E-8674-4408-9306-74435919795F}</Project>
+      <Name>A1S3</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
