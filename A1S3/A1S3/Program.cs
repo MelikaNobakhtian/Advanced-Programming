@@ -11,7 +11,7 @@ namespace A1S3
     {
        public static void Main(string[] args)
         {
-            /*string path = @"c:\git\AP97982\A1S3\A1S3\result.txt";
+            string path = @"c:\git\AP97982\A1S3\A1S3\result.txt";
             File.Create(path).Close();
             string filepath = @"c:\git\AP97982\A1S3\A1S3\TwitterData\Tweets\";            string negpath = @"c:\git\AP97982\A1S3\A1S3\TwitterData\Words\negative.txt";            string pospath= @"c:\git\AP97982\A1S3\A1S3\TwitterData\Words\positive.txt";            string[] posword = Q1_GetWords(pospath);            string[] negword = Q1_GetWords(negpath);            string[] listfile = Directory.GetFiles(filepath);            double reactionrate = 0;
                         foreach (string dir in listfile)
@@ -23,13 +23,8 @@ namespace A1S3
                 reactionrate = Q5_GetAvgPopChargeOfTweets(lines, negword, posword);
                 File.AppendAllText(path, name +":"+reactionrate+ '\n');
 
-            }*/
-            string tweet = " ";
-            string tweet1 = ":((bad,death,kill?";
-            string tweet2 = "you are good!My friend.";
-            string tweet3 = "family and friend are the best.give happiness to them.smile on them,be good";
-            string[] pos = { "happiness", "hope", "God", "smile", "friend", "family", "good", "brave" };
-            string[] neg = { "sad", "hopeless", "suicide", "bad", "depressed", "death", "kill" };            string[] tweets = { tweet, tweet1, tweet2, tweet3 };            double functionresult = Q5_GetAvgPopChargeOfTweets(tweets, neg, pos);
+            }
+           
         }
 
         public static string[] Q1_GetWords(string path)
