@@ -1,0 +1,19 @@
+AfsharMahnaz.txt:Mahnaz Afshar:political:-2
+alimotahari_ir.txt:Ali Motahari:political:-2
+azarijahromi.txt:Mohammadjavad Azarijahromi:
+BBCBastani.txt:Hossein Bastani:
+BehnoudMasoud.txt:Masoud Behnoud:
+Eshaq_jahangiri.txt:Eshaq Jahangiri:
+HaddadAdel_ir.txt:Gholamali Haddadadel:
+hesamodin1.txt:Hesamodin Ashna:
+ir_aref.txt:Mohammadreza Aref:
+ir_rezaee.txt:Mohsen Rezaee:
+IsraelPersian.txt:Ministry of Foreign Affairs of Israel:
+Jedaal.txt:Ali Alizade:
+Khamenei_fa.txt:Seyed Ali Khamenei:
+mah_sadeghi.txt:Mahmood Sadeghi:
+MohajeraniSayed.txt:Seyed Ataollah Mohajerani:
+mostafatajzade.txt:Mostafa Tajzade:
+Rouhani_ir.txt:Hassan Rouhani:
+t_alidoosti.txt:Tarane Alidoosti:
+USAdarFarsi.txt:Ministry of Foreign Affairs of USA:
