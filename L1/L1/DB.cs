@@ -62,7 +62,18 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Ticket MostExpensiveTicket()
         {
-            throw new NotImplementedException();
+            double max = 0;
+            List<Ticket> expensive = new List<Ticket>();
+            foreach(Ticket t in Tickets)
+            {
+                if (t.Price > max)
+                {
+                    max = t.Price;
+                    expensive.Clear();
+                    expensive.Add(t);
+                }
+            }
+            return expensive[0];
         }
 
         /// <summary>
@@ -71,7 +82,30 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static Airline FavouriteAirline()
         {
-            throw new NotImplementedException();
+           
+            List<Airline> A = new List<Airline>();
+            foreach(Ticket t in Tickets)
+            {
+                if (!A.Contains(t.Flight.Airline))
+                    A.Add(t.Flight.Airline);
+            }
+            List<int> n = new List<int>(A.Count);
+            for(int i = 0; i < A.Count; i++)
+                foreach(Ticket t in Tickets)
+                    if (t.Flight.Airline == A[i])
+                        n[i] += 1;
+                    
+        
+            int max = n[0];
+            for(int i = 1; i < A.Count; i++)
+            {
+                if (n[i] > max)
+                {
+                    A.RemoveRange(0, i);
+                    max = n[i];
+                }
+            }
+            return A[0];
         }
 
         /// <summary>
@@ -80,7 +114,12 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static double UsersDebts()
         {
-            throw new NotImplementedException();
+            double debts = 0;
+            foreach(User u in Users)
+            {
+                debts += u.Account;
+            }
+            return Math.Abs(debts);
         }
 
         /// <summary>
@@ -89,7 +128,29 @@ namespace ConsoleApp1
         /// <returns></returns>
         public static string FavouriteDestination()
         {
-            throw new NotImplementedException();
+            List<string> Dest = new List<string>();
+            foreach (Ticket t in Tickets)
+            {
+                if (!Dest.Contains(t.Flight.Destination))
+                    Dest.Add(t.Flight.Destination);
+            }
+            List<int> n = new List<int>(Dest.Count);
+            for (int i = 0; i < Dest.Count; i++)
+                foreach (Ticket t in Tickets)
+                    if (t.Flight.Destination == Dest[i])
+                        n[i] += 1;
+
+
+            int max = n[0];
+            for (int i = 1; i < Dest.Count; i++)
+            {
+                if (n[i] > max)
+                {
+                    Dest.RemoveRange(0, i);
+                    max = n[i];
+                }
+            }
+            return Dest[0];
         }
 
     }

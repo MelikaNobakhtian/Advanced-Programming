@@ -25,6 +25,7 @@ namespace ConsoleApp1
         public bool IsSold()
         {
             if (this.Buyer != null)
+      
                 return true;
             return false;
         }
