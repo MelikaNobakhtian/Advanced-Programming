@@ -1,116 +1,119 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using A3;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace A3.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class ProgramTests
     {
         private static string GetTestFile(out int lineCount, out int charCount)
         {
             charCount = 0;
-            string tmpFile = Path.GetTempFileName();
+            var tmpFile = Path.GetTempFileName();
             lineCount = new Random(0).Next(10, 100);
-            List<string> lines = new List<string>();
-            for (int i = 0; i < lineCount; i++)
+            var lines = new List<string>();
+            for (var i = 0; i < lineCount; i++)
             {
-                string line = $"Line number {i}";
+                var line = $"Line number {i}";
                 charCount += line.Length;
                 lines.Add(line);
             }
+
             File.WriteAllLines(tmpFile, lines);
             return tmpFile;
         }
 
         private static string[] GetTestDir(out string tmpDir)
 
-     {
-         tmpDir = Path.GetTempFileName();
-         if (File.Exists(tmpDir))
-            File.Delete(tmpDir);
+        {
+            tmpDir = Path.GetTempFileName();
+            if (File.Exists(tmpDir))
+                File.Delete(tmpDir);
 
-        if (!Directory.Exists(tmpDir))
-            Directory.CreateDirectory(tmpDir);
-        else
-            foreach (string file in Directory.GetFiles(tmpDir))
-                File.Delete(file);
+            if (!Directory.Exists(tmpDir))
+                Directory.CreateDirectory(tmpDir);
+            else
+                foreach (var file in Directory.GetFiles(tmpDir))
+                    File.Delete(file);
 
-         int rndNum = new Random(0).Next(10, 20);
-         List<string> files = new List<string>();
-         for (int i=0; i<rndNum; i++)
-         {
-             string fileName = Path.Combine(tmpDir, $"file{i}.txt");
-             File.WriteAllText(fileName, $"file{i}.txt content");
-             files.Add(fileName);
+            var rndNum = new Random(0).Next(10, 20);
+            var files = new List<string>();
+            for (var i = 0; i < rndNum; i++)
+            {
+                var fileName = Path.Combine(tmpDir, $"file{i}.txt");
+                File.WriteAllText(fileName, $"file{i}.txt content");
+                files.Add(fileName);
+            }
+
+            return files.ToArray();
         }
-         return files.ToArray();
-         }
 
 
-        [TestMethod()]
+        [TestMethod]
         public void CaculateLengthTest()
         {
-            int expectedresult = 16;
-            int functionresult = Program.CaculateLength("Hello my friend!");
+            var expectedresult = 16;
+            var expectedresult1 = 24;
+            var functionresult1 = Program.CaculateLength("end!!" + '\n' + "به کجا چنین شتابان");
+            var functionresult = Program.CaculateLength("Hello my friend!");
             Assert.AreEqual(expectedresult, functionresult);
+            Assert.AreEqual(expectedresult1, functionresult1);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void LetterCountTest()
         {
-            int expectedresult = 5;
-            int functionresult = Program.LetterCount("Why me??");
+            var expectedresult = 5;
+            var functionresult = Program.LetterCount("Why me??");
+            var expectedresult1 = 20;
+            var functionresult1 = Program.LetterCount("beautiful: زیبا " + '\n' + " ugly : زشت");
             Assert.AreEqual(expectedresult, functionresult);
+            Assert.AreEqual(expectedresult1, functionresult1);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void LineCountTest()
         {
-            int expectedresult = 4;
-            int functionresult = Program.LineCount("stop thinking" +'\n'+
-                '\n'+"about what"+
-                '\n'+"others thinking"+
-                '\n'+ "about you");
+            var expectedresult = 4;
+            var functionresult = Program.LineCount("stop thinking" +
+                                                   '\n' + "about what" +
+                                                   '\n' + "others thinking" +
+                                                   '\n' + "about you");
+            var expectedresult1 = 0;
+            var functionrsult1 = Program.LineCount("حد تصور" + '\n' + "مهربان تر از" + '\n' + "وخدایی هست");
             Assert.AreEqual(expectedresult, functionresult);
+            Assert.AreEqual(expectedresult1, functionrsult1);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void FileLineCountTest()
         {
             int lineCount;
             int charCount;
-            string path = GetTestFile(out lineCount, out charCount);
-            int functionresult = Program.FileLineCount(path);
+            var path = GetTestFile(out lineCount, out charCount);
+            var functionresult = Program.FileLineCount(path);
             Assert.AreEqual(lineCount, functionresult);
-
-
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void ListFilesTest()
         {
             string tmpdir;
-            string[] expectedresult = GetTestDir(out tmpdir);
-            string[] functionresult = Program.ListFiles(tmpdir);
+            var expectedresult = GetTestDir(out tmpdir);
+            var functionresult = Program.ListFiles(tmpdir);
             CollectionAssert.AreEqual(expectedresult, functionresult);
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void FileSizeTest()
         {
             int lineCount;
             int charCount;
-            string path = GetTestFile(out lineCount, out charCount);
-            double functionresult = Program.FileSize(path);
+            var path = GetTestFile(out lineCount, out charCount);
+            var functionresult = Program.FileSize(path);
             Assert.AreEqual(charCount, functionresult);
-
-
         }
     }
 }

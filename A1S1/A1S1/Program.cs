@@ -6,54 +6,62 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace A3
-    {
+{
     public class Program
-        {
+    {
         public static void Main(string[] args)
-            {
-            
-            }
+        {
+
+        }
         public static int CaculateLength(string str)
-            {
-           
+        {
+
             return str.Length;
-            }
-        
+        }
+
         public static int LetterCount(string str)
-            {
-            
+        {
+
             int num = 0;
-            foreach(char letter in str)
+            foreach (char letter in str)
             {
                 if (Char.IsLetter(letter))
                     num++;
 
             }
             return num;
-            }
-        
+        }
+
         public static int LineCount(string str)
-            {
-            
+        {
+
             string[] lines = str.Split('\n');
-            return lines.Length-1;
-            }
-        
+            return lines.Length - 1;
+        }
+
         public static int FileLineCount(string filePath)
-            {
-            
+        {
+
             string[] lines = File.ReadAllLines(filePath);
             return lines.Length;
-            }
-        
+        }
+
         public static string[] ListFiles(string dirPath)
-            {
-            string[] files= Directory.GetFiles(dirPath);
+        {
+            string[] files = Directory.GetFiles(dirPath);
+            string[] sortfile = Sort(files);
+
+            return sortfile;
+
+        }
+
+        public static string[] Sort(string[] files)
+        {
             int length = files.Length;
             string[] sortfile = new string[length];
-            for(int i=0;i<length; i++)
+            for (int i = 0; i < length; i++)
             {
-                for(int j = 0; j < length; j++)
+                for (int j = 0; j < length; j++)
                 {
                     if (files[j].Contains($"file{i}.txt"))
                     {
@@ -64,10 +72,10 @@ namespace A3
             }
 
             return sortfile;
-            }
-        
+        }
+
         public static double FileSize(string filePath)
-            {
+        {
             int charcount = 0;
             string[] lines = File.ReadAllLines(filePath);
             int num = FileLineCount(filePath);
@@ -75,7 +83,7 @@ namespace A3
                 charcount += lines[i].Length;
             return charcount;
 
-            
-            }
+
         }
     }
+}
