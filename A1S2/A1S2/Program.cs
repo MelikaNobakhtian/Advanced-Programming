@@ -16,18 +16,18 @@ namespace A1S2
             Console.WriteLine(size);
         }
 
-        private static long Volume (string path)
+        private static long Volume(string path)
         {
             long volume = 0;
             string[] dir = Directory.GetDirectories(path);
             string[] files = Directory.GetFiles(path);
-            foreach(string file in files)
+            foreach (string file in files)
             {
                 FileInfo fi = new FileInfo(file);
                 volume += fi.Length;
-                
+
             }
-          foreach(string paths in dir)
+            foreach (string paths in dir)
             {
                 volume += Volume(paths);
 
