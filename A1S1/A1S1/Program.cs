@@ -36,7 +36,7 @@ namespace A3
         {
 
             string[] lines = str.Split('\n');
-            return lines.Length - 1;
+            return lines.Length ;
         }
 
         public static int FileLineCount(string filePath)

@@ -81,7 +81,7 @@ namespace A3.Tests
                                                    '\n' + "about what" +
                                                    '\n' + "others thinking" +
                                                    '\n' + "about you");
-            var expectedresult1 = 0;
+            var expectedresult1 = 3;
             var functionrsult1 = Program.LineCount("حد تصور" + '\n' + "مهربان تر از" + '\n' + "وخدایی هست");
             Assert.AreEqual(expectedresult, functionresult);
             Assert.AreEqual(expectedresult1, functionrsult1);
