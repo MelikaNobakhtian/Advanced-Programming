@@ -103,7 +103,7 @@ namespace A3.Tests
             string tmpdir;
             var expectedresult = GetTestDir(out tmpdir);
             var functionresult = Program.ListFiles(tmpdir);
-            CollectionAssert.AreEqual(expectedresult, functionresult);
+            CollectionAssert.AreEquivalent(expectedresult, functionresult);
         }
 
         [TestMethod]
