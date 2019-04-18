@@ -36,8 +36,8 @@ namespace A3
 
         public static string[] ListFiles(string dirPath)
         {
-            var files = Directory.GetFiles(dirPath);
-            return files;
+            var listFiles = Directory.GetFiles(dirPath);
+            return listFiles;
         }
 
 
