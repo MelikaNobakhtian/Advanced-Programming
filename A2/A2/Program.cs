@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace A2
 {
     public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
         }
 
@@ -20,13 +16,13 @@ namespace A2
 
         public static void AbsArray(int[] array)
         {
-            for (int i = 0; i < array.Length; i++)
+            for (var i = 0; i < array.Length; i++)
                 array[i] = Math.Abs(array[i]);
         }
 
         public static void Swap(ref int a, ref int b)
         {
-            int c = a;
+            var c = a;
             a = b;
             b = c;
         }
@@ -44,13 +40,13 @@ namespace A2
         public static void Sum(out int sum, params int[] numbers)
         {
             sum = 0;
-            foreach (int num in numbers)
+            foreach (var num in numbers)
                 sum += num;
         }
 
         public static void ArraySwap(int[] first, int[] second)
         {
-            for (int i = 0; i < first.Length; i++)
+            for (var i = 0; i < first.Length; i++)
             {
                 first[i] = first[i] + second[i];
                 second[i] = first[i] - second[i];
@@ -60,44 +56,9 @@ namespace A2
 
         public static void ArraySwap(ref int[] first, ref int[] second)
         {
-            int a = first.Length;
-            int b = second.Length;
-            if (a < b)
-            {
-                Array.Resize(ref first, b);
-                for(int i = 0; i < a; i++)
-                {
-                    first[i] = first[i] + second[i];
-                    second[i] = first[i] - second[i];
-                    first[i] = first[i] - second[i];
-                }
-
-                for(int i = a; i < b; i++)
-                {
-                    first[i] = second[i];
-                }
-
-                Array.Resize(ref second, a);
-            }
-            else
-            {
-                Array.Resize(ref second, a);
-                for (int i = 0; i < b; i++)
-                {
-                    first[i] = first[i] + second[i];
-                    second[i] = first[i] - second[i];
-                    first[i] = first[i] - second[i];
-                }
-
-                for (int i = b; i < a; i++)
-                {
-                    second[i]=first[i];
-                }
-
-                Array.Resize(ref first, b);
-
-            }
-
+            var thirdArray = first;
+            first = second;
+            second = thirdArray;
         }
     }
 }
