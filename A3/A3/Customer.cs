@@ -30,7 +30,7 @@ namespace A3
             Dictionary<Product, int> prodic=new Dictionary<Product, int>();
             foreach(Product pro in ourProducts.Distinct())
                 prodic.Add(pro, ourProducts.Count(p => p.Equals(pro)));
-            return prodic.FirstOrDeafultlt(p => p.Value == prodic.Values.Max()).Key;
+            return prodic.FirstOrDefault(p => p.Value == prodic.Values.Max()).Key;
             
         }
 
