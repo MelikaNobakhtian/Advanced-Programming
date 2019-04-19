@@ -18,7 +18,8 @@ namespace A3
         public float CalculateTotalPrice()
         {
             float total = 0;
-            foreach (var product in Products) total += product.Price;
+            foreach (var product in Products) 
+                total += product.Price;
             return total;
         }
     }
