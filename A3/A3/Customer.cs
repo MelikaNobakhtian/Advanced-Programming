@@ -27,20 +27,11 @@ namespace A3
                 ourProducts.AddRange(pru);
             }
 
-
-            var groupWithProducts = from product in ourProducts
-                group product by product
-                into g
-                select new
-                {
-                    Item = g.Key,
-                    Count = g.Count()
-                };
-
-            var groupsSorted = groupWithProducts.OrderByDescending(g => g.Count);
-            var mostFrequest = groupsSorted.First().Item;
-
-            return mostFrequest;
+            Dictionary<Product, int> prodic=new Dictionary<Product, int>();
+            foreach(Product pro in ourProducts.Distinct())
+                prodic.Add(pro, ourProducts.Count(p => p.Equals(pro)));
+            return prodic.FirstOrDeafultlt(p => p.Value == prodic.Values.Max()).Key;
+            
         }
 
         public List<Order> UndeliveredOrders()
