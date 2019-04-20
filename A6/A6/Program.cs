@@ -141,16 +141,16 @@ namespace A6
 
     public class TypeWithMemoryOnHeap
     {
-        public string[] HeapStrings;
+        public string[] HeapString;
 
         public void Allocate()
         {
-            HeapStrings = new string[1000000];
+            HeapString = new string[1000000];
         }
 
         public void DeAllocate()
         {
-            HeapStrings = null;
+            HeapString = null;
         }
     }
 
