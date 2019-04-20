@@ -1,54 +1,26 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace A3
 {
     public class Order
     {
-        private List<Product> _Products=new List<Product>();
-        public List<Product> Products
-        {
-            get
-            {
-                return _Products;
-            }
-            set
-            {
-                _Products=value;
-            }
-        }
-        private bool _IsDelivered;
-       
+        public List<Product> Products { get; set; } = new List<Product>();
 
-        public bool IsDelivered
-        {
-            get
-            {
-                return _IsDelivered;
-            }
-            set
-            {
-                _IsDelivered = value;
-            }
-        }
+
+        public bool IsDelivered { get; set; }
 
         public Order(List<Product> products, bool isDelivered)
         {
             IsDelivered = isDelivered;
-            Products=new List<Product>(products);
+            Products = new List<Product>(products);
         }
 
         public float CalculateTotalPrice()
         {
-            float Total = 0;
-            foreach(Product product in this.Products)
-            {
-                Total += product.Price;
-            }
-            return Total;
+            float total = 0;
+            foreach (var product in Products) 
+                total += product.Price;
+            return total;
         }
     }
 }
