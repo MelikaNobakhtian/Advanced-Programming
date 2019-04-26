@@ -48,40 +48,24 @@ namespace A6
         public byte OfSize12;
     }
 
+    public struct TypeOfSize4096
+    {
+        public TypeOfSize1024 OfSize1024;
+        public TypeOfSize1024 OfSize10242;
+        public TypeOfSize1024 OfSize10243;
+        public TypeOfSize1024 OfSize10244;
+    }
+
     public struct TypeOfSize32768
     {
-        public TypeOfSize1024 Size10241;
-        public TypeOfSize1024 Size10242;
-        public TypeOfSize1024 Size10243;
-        public TypeOfSize1024 Size10244;
-        public TypeOfSize1024 Size10245;
-        public TypeOfSize1024 Size10246;
-        public TypeOfSize1024 Size10247;
-        public TypeOfSize1024 Size10248;
-        public TypeOfSize1024 Size10249;
-        public TypeOfSize1024 Size102410;
-        public TypeOfSize1024 Size102411;
-        public TypeOfSize1024 Size102412;
-        public TypeOfSize1024 Size102413;
-        public TypeOfSize1024 Size102414;
-        public TypeOfSize1024 Size102415;
-        public TypeOfSize1024 Size102416;
-        public TypeOfSize1024 Size102417;
-        public TypeOfSize1024 Size102418;
-        public TypeOfSize1024 Size102419;
-        public TypeOfSize1024 Size102420;
-        public TypeOfSize1024 Size102421;
-        public TypeOfSize1024 Size102422;
-        public TypeOfSize1024 Size102423;
-        public TypeOfSize1024 Size102424;
-        public TypeOfSize1024 Size102425;
-        public TypeOfSize1024 Size102426;
-        public TypeOfSize1024 Size102427;
-        public TypeOfSize1024 Size102428;
-        public TypeOfSize1024 Size102429;
-        public TypeOfSize1024 Size102430;
-        public TypeOfSize1024 Size102431;
-        public TypeOfSize1024 Size102432;
+       public TypeOfSize4096 OfSize4096;
+       public TypeOfSize4096 OfSize40962;
+       public TypeOfSize4096 OfSize40963;
+       public TypeOfSize4096 OfSize40964;
+       public TypeOfSize4096 OfSize40965;
+       public TypeOfSize4096 OfSize40966;
+       public TypeOfSize4096 OfSize40967;
+       public TypeOfSize4096 OfSize40968;
     }
 
     public struct StructOrClass1
