@@ -2,11 +2,11 @@ using System.Collections.Generic;
 
 namespace A7
 {
-    public class EduInstitute<T> where T : ITeacher, ICitizen
+    public class EduInstitute<TTeacher> where TTeacher : ITeacher, ICitizen
     {
         public string Title { get; set; }
         public Degree MinimumDegree { get; set; }
-        public static List<T> Teachers { get; set; }
+        public static List<ITeacher> Teachers { get; set; }
 
         public EduInstitute(string title, Degree minDegree)
         {
@@ -14,7 +14,7 @@ namespace A7
             MinimumDegree = minDegree;
         }
 
-        public bool Register(T teacher)
+        public bool Register(TTeacher teacher)
         {
             if (IsEligible(teacher))
             {
@@ -25,7 +25,7 @@ namespace A7
             return false;
         }
 
-        public bool IsEligible(T teacher)
+        public bool IsEligible(TTeacher teacher)
         {
             return teacher.TopDegree >= MinimumDegree;
         }
