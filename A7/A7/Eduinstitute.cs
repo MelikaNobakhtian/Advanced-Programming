@@ -6,7 +6,7 @@ namespace A7
     {
         public string Title { get; set; }
         public Degree MinimumDegree { get; set; }
-        public static List<ITeacher> Teachers { get; set; }
+        public static List<TTeacher> Teachers { get; set; }
 
         public EduInstitute(string title, Degree minDegree)
         {
@@ -16,7 +16,7 @@ namespace A7
 
         public bool Register(TTeacher teacher)
         {
-            if (IsEligible(teacher))
+            if (IsEligible(teacher) && !PoliceStation.BackgroundCheck(teacher))
             {
                 Teachers.Add(teacher);
                 return true;
