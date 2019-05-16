@@ -37,11 +37,27 @@ namespace A8
 
         public static bool operator <(Human h1, Human h2)
         {
+            if (object.ReferenceEquals(h1, null) &&
+                object.ReferenceEquals(h2, null))
+                return true;
+
+            if (object.ReferenceEquals(h1, null) ||
+                object.ReferenceEquals(h2, null))
+                return false;
+
             return (h1.BirthDate > h2.BirthDate);
         }
 
         public static bool operator >(Human h1, Human h2)
         {
+            if (object.ReferenceEquals(h1, null) &&
+                object.ReferenceEquals(h2, null))
+                return true;
+
+            if (object.ReferenceEquals(h1, null) ||
+                object.ReferenceEquals(h2, null))
+                return false;
+
             return (h1.BirthDate < h2.BirthDate);
         }
 

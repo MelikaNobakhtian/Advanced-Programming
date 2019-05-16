@@ -30,6 +30,7 @@ namespace A8.Tests
             Assert.IsFalse(human == HumanData.DayHuman);
             Assert.IsFalse(human == HumanData.YearHuman);
             Assert.IsFalse(human == HumanData.MonthHuman);
+            Assert.IsTrue(HumanData.NullHuman == HumanData.NullHuman2);
 
         }
 
@@ -55,6 +56,7 @@ namespace A8.Tests
             Assert.IsFalse(human < HumanData.SmallerMonth);
             Assert.IsFalse(human < HumanData.SmallerYear);
             Assert.IsFalse(human < HumanData.SameHuman);
+            Assert.IsFalse(human < HumanData.NullHuman);
 
         }
 
@@ -69,6 +71,7 @@ namespace A8.Tests
             Assert.IsTrue(human > HumanData.SmallerMonth);
             Assert.IsTrue(human > HumanData.SmallerYear);
             Assert.IsFalse(human > HumanData.SameHuman);
+            Assert.IsFalse(human > HumanData.NullHuman);
 
         }
 
