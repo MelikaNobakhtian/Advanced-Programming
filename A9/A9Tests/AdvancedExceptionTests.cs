@@ -75,7 +75,7 @@ namespace A9Tests
 
         #endregion
 
-        /* #region Nested
+         #region Nested
          [ExpectedException(typeof(NotImplementedException))]
          [TestMethod]
          public void NestedExceptionTest()
@@ -122,7 +122,7 @@ namespace A9Tests
          }
          #endregion
      }
-     */
+     
         [TestClass]
         public class GenerateExceptionTests
         {
@@ -140,5 +140,5 @@ namespace A9Tests
             }
         }
 
-    }
+    
 }

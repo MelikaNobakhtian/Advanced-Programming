@@ -24,9 +24,9 @@ namespace A9
                         return _Input;
                     else
                     {
-                        this.Input = null;
-                        int len = Input.Length;
+                        int c = _Input.Length;
                     }
+
                 }
                 catch
                 {
@@ -44,8 +44,7 @@ namespace A9
                         _Input = value;
                     else
                     {
-                        this.Input = null;
-                        int len = Input.Length;
+                        int c = value.Length;
                     }
                 }
                 catch
@@ -61,7 +60,7 @@ namespace A9
         public ExceptionHandler(
             string input,
             bool causeExceptionInConstructor,
-            bool doNotThrow=false)
+            bool doNotThrow = false)
         {
             DoNotThrow = doNotThrow;
             this._Input = input;
@@ -69,8 +68,8 @@ namespace A9
             {
                 if (causeExceptionInConstructor)
                 {
-                    this.Input= null;
-                    int len = Input.Length;
+                   input=null;
+                    int len = input.Length;
                 }
             }
             catch
@@ -87,6 +86,44 @@ namespace A9
                 throw new InvalidDataException();
             return;
 
+        }
+
+        public void NestedMethods()
+        {
+            MethodA();
+            Console.WriteLine("Complete NestedMethods");
+        }
+
+        private void MethodA()
+        {
+            MethodB();
+            Console.WriteLine("Complete MethodA");
+        }
+
+        private void MethodB()
+        {
+            MethodC();
+            Console.WriteLine("Complete MethodB");
+        }
+
+        private void MethodC()
+        {
+            MethodD();
+            Console.WriteLine("Complete MethodC");
+        }
+
+        private void MethodD()
+        {
+            try
+            {
+                char c = Input[int.Parse(Input)];
+                Console.WriteLine("Complete MethodD");
+            }
+
+            catch
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public void OverflowExceptionMethod()
@@ -107,11 +144,11 @@ namespace A9
 
         public void FormatExceptionMethod()
         {
-			try
+            try
             {
                 int i = int.Parse(Input);
             }
-            catch(FormatException e)
+            catch (FormatException e)
             {
                 if (!DoNotThrow)
                     throw;
@@ -123,16 +160,16 @@ namespace A9
         {
             try
             {
-
+                string[] lines = File.ReadAllLines($"{Input}.txt");
             }
 
-            catch(FileNotFoundException ffe)
+            catch (FileNotFoundException ffe)
             {
                 if (!DoNotThrow)
                     throw;
                 ErrorMsg = $"Caught exception {ffe.GetType()}";
             }
- 
+
         }
 
         public void IndexOutOfRangeExceptionMethod()
@@ -143,13 +180,13 @@ namespace A9
                 char c = s[int.Parse(Input)];
             }
 
-            catch(IndexOutOfRangeException ior)
+            catch (IndexOutOfRangeException ior)
             {
                 if (!DoNotThrow)
                     throw;
                 ErrorMsg = $"Caught exception {ior.GetType()}";
             }
- 
+
         }
 
         public void OutOfMemoryExceptionMethod()
@@ -159,13 +196,13 @@ namespace A9
                 int[] a = new int[int.Parse(Input)];
             }
 
-            catch(OutOfMemoryException ome)
+            catch (OutOfMemoryException ome)
             {
                 if (!DoNotThrow)
                     throw;
                 ErrorMsg = $"Caught exception {ome.GetType()}";
             }
-            
+
         }
 
         public void MultiExceptionMethod()
@@ -196,20 +233,21 @@ namespace A9
                 FinallyBlockStringOut = "InTryBlock::";
                 int length = keyword.Length;
                 if (keyword == "beautiful")
-                    FinallyBlockStringOut = $"InTryBlock:{keyword}:{keyword.Length}:DoneWriting";
+                    FinallyBlockStringOut = $"InTryBlock:{keyword}:{keyword.Length}:DoneWriting:";
             }
 
-            catch(NullReferenceException nre)
+            catch (NullReferenceException nre)
             {
+
+                FinallyBlockStringOut += $"{nre.Message}:";
                 if (!DoNotThrow)
                     throw;
-                FinallyBlockStringOut += $"{nre.Message}";
             }
 
             finally
             {
                 if (keyword == "beautiful" || DoNotThrow)
-                    FinallyBlockStringOut += $":InFinallyBlock:EndOfMethod";
+                    FinallyBlockStringOut += $"InFinallyBlock:EndOfMethod";
                 else
                     FinallyBlockStringOut += "InFinallyBlock";
 
