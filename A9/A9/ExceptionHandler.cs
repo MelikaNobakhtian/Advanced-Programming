@@ -24,7 +24,7 @@ namespace A9
                         return _Input;
                     else
                     {
-                        int c = _Input.Length;
+                        int i = _Input.Length;
                     }
 
                 }
@@ -68,7 +68,7 @@ namespace A9
             {
                 if (causeExceptionInConstructor)
                 {
-                   input=null;
+                    input = null;
                     int len = input.Length;
                 }
             }
