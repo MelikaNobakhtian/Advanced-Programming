@@ -44,7 +44,7 @@ namespace A9
                         _Input = value;
                     else
                     {
-                        int c = value.Length;
+                        int j = value.Length;
                     }
                 }
                 catch
