@@ -81,9 +81,9 @@ namespace A9
             }
         }
 
-        public static void ThrowIfOdd(int n)
+        public static void ThrowIfOdd(int num)
         {
-            if (n % 2 == 1)
+            if (num % 2 == 1)
                 throw new InvalidDataException();
             return;
 
