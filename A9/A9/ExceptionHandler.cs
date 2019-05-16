@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -88,30 +89,35 @@ namespace A9
 
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public void NestedMethods()
         {
             MethodA();
             Console.WriteLine("Complete NestedMethods");
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         private void MethodA()
         {
             MethodB();
             Console.WriteLine("Complete MethodA");
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         private void MethodB()
         {
             MethodC();
             Console.WriteLine("Complete MethodB");
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         private void MethodC()
         {
             MethodD();
             Console.WriteLine("Complete MethodC");
         }
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         private void MethodD()
         {
             try
