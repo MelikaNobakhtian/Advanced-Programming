@@ -160,7 +160,7 @@ namespace A9
         {
             try
             {
-                string[] lines = File.ReadAllLines($"{Input}.txt");
+                string[] lines = File.ReadAllLines($@"..\..\..\{Input}.txt");
             }
 
             catch (FileNotFoundException ffe)
