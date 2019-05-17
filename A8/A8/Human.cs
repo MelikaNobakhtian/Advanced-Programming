@@ -72,6 +72,10 @@ namespace A8
         }
         public static Human operator +(Human h1, Human h2)
         {
+            if (object.ReferenceEquals(h1, null) ||
+                object.ReferenceEquals(h2, null))
+                return null;
+
             string firstname = "ChildFirstName";
             string lastname = "ChildLastName";
             double height = 30;

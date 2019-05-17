@@ -42,6 +42,8 @@ namespace A8.Tests
             var child = human + human1;
             var expectedchild = new Human("ChildFirstName", "ChildLastName", 30, DateTime.Today);
             Assert.AreEqual(child, expectedchild);
+            var nullchild = HumanData.NullHuman + human;
+            Assert.AreEqual(null, nullchild);
 
         }
 
