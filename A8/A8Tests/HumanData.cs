@@ -23,5 +23,6 @@ namespace A8Tests
         public static Human GreaterMonth = new Human("Sara", "Ghasemi", 165, new DateTime(2001, 1, 11));
         public static Human GreaterDay = new Human("Sara", "Ghasemi", 165, new DateTime(2001, 4, 7));
         public static Human NullHuman = null;
+        public static Human NullHuman2 = null;
     }
 }
