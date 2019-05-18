@@ -120,16 +120,9 @@ namespace A9
         [MethodImpl(MethodImplOptions.NoInlining)]
         private void MethodD()
         {
-            try
-            {
-                char c = Input[int.Parse(Input)];
-                Console.WriteLine("Complete MethodD");
-            }
 
-            catch
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException();
+
         }
 
         public void OverflowExceptionMethod()
@@ -234,31 +227,34 @@ namespace A9
 
         public void FinallyBlockMethod(string keyword)
         {
+            StringBuilder sb = new StringBuilder();
             try
             {
-                FinallyBlockStringOut = "InTryBlock::";
-                int length = keyword.Length;
                 if (keyword == "beautiful")
-                    FinallyBlockStringOut = $"InTryBlock:{keyword}:{keyword.Length}:DoneWriting:";
+                    sb.Append($"InTryBlock:{keyword}:{keyword.Length}:DoneWriting:");
+                else
+                {
+                    sb.Append("InTryBlock::");
+                    int length = keyword.Length;
+                }
+
             }
+
 
             catch (NullReferenceException nre)
             {
-
-                FinallyBlockStringOut += $"{nre.Message}:";
+                sb.Append($"{nre.Message}:");
                 if (!DoNotThrow)
                     throw;
             }
 
             finally
             {
-                if (keyword == "beautiful" || DoNotThrow)
-                    FinallyBlockStringOut += $"InFinallyBlock:EndOfMethod";
-                else
-                    FinallyBlockStringOut += "InFinallyBlock";
-
-
+                sb.Append("InFinallyBlock");
+                FinallyBlockStringOut = sb.ToString();
             }
+            if (keyword == "beautiful" || DoNotThrow)
+                FinallyBlockStringOut += ":EndOfMethod";
         }
     }
 }
