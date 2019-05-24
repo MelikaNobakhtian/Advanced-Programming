@@ -89,6 +89,7 @@ namespace A10
         /// <returns>sum of vector 1 and 2</returns>
         public static Vector<_Type> operator +(Vector<_Type> v1, Vector<_Type> v2)
         {
+
             if (v1.Data.Length != v2.Data.Length)
                 throw new InvalidCastException("Lengths are not equal");
             Vector<_Type> sum = new Vector<_Type>(v1.Size) { };
@@ -134,6 +135,14 @@ namespace A10
         /// <returns>whether v1 is equal to v2</returns>
         public static bool operator ==(Vector<_Type> v1, Vector<_Type> v2)
         {
+            if (object.ReferenceEquals(v1, null) &&
+                object.ReferenceEquals(v2, null))
+                return true;
+
+            if (object.ReferenceEquals(v1, null) ||
+                object.ReferenceEquals(v2, null))
+                return false;
+
             if (v1.Size != v2.Size)
                 return false;
             bool equal = true;
@@ -173,6 +182,8 @@ namespace A10
         public override bool Equals(object obj)
         {
             var vector = obj as Vector<_Type>;
+            if (vector == null)
+                return false;
             return this.Equals(vector);
         }
 
@@ -183,7 +194,6 @@ namespace A10
         /// <returns>whether other vector is equal to this vector</returns>
         public bool Equals(Vector<_Type> other)
         {
-
             return (this == other);
         }
 

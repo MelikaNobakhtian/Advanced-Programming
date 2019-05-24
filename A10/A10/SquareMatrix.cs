@@ -4,22 +4,15 @@ using System.IO;
 
 namespace A10
 {
-    //public class SquareMatrix<_Type> : Matrix<_Type>
-    //     where _Type : IEquatable<_Type>
-    //{
-    //    public override bool Equals(object obj)
-    //    {
-    //        return base.Equals(obj);
-    //    }
+    public class SquareMatrix<_Type> : Matrix<_Type>
+         where _Type : IEquatable<_Type>
+    {
+        public SquareMatrix(IEnumerable<Vector<_Type>> rows) : base(rows)
+        {
+        }
 
-    //    public override int GetHashCode()
-    //    {
-    //        return base.GetHashCode();
-    //    }
-
-    //    public override string ToString()
-    //    {
-    //        return base.ToString();
-    //    }
-    //}
+        public SquareMatrix(int rowCount) : base(rowCount, rowCount)
+        {
+        }
+    }
 }

@@ -73,9 +73,9 @@ namespace A10
             var sum = new Matrix<_Type>(m1.RowCount, m2.ColumnCount) { };
             for (int i = 0; i < m1.RowCount; i++)
             {
-                dynamic v1 = m1.Rows[i];
-                dynamic v2 = m2.Rows[i];
-                sum.Rows[i] = v1 + v2;
+                dynamic v1 = m1[i];
+                dynamic v2 = m2[i];
+                sum[i] = v1 + v2;
 
             }
             return sum;
@@ -97,13 +97,9 @@ namespace A10
             {
                 for (int j = 0; j < m2.ColumnCount; j++)
                 {
-                    for (int h = 0, k = 0; h < m1.ColumnCount; h++, k++)
-                    {
-                        dynamic mat1 = m1[i, h];
-                        dynamic mat2 = m2[h, j];
-                        result[i, j] += (mat1 * mat2);
-
-                    }
+                    dynamic v1 = m1[i];
+                    dynamic v2 = m2.GetColumn(j);
+                    result[i, j] = v1 * v2;
                 }
             }
 
@@ -114,13 +110,21 @@ namespace A10
 
         public static bool operator ==(Matrix<_Type> m1, Matrix<_Type> m2)
         {
+            if (object.ReferenceEquals(m1, null) &&
+                object.ReferenceEquals(m2, null))
+                return true;
+
+            if (object.ReferenceEquals(m1, null) ||
+                object.ReferenceEquals(m2, null))
+                return false;
+
             if (m1.RowCount != m2.RowCount || m1.ColumnCount != m2.ColumnCount)
                 return false;
             bool equal = true;
             for (int i = 0; i < m1.RowCount; i++)
             {
-                dynamic v1 = m1.Rows[i];
-                dynamic v2 = m2.Rows[i];
+                dynamic v1 = m1[i];
+                dynamic v2 = m2[i];
                 if (v1 != v2)
                 {
                     equal = false;
@@ -180,6 +184,8 @@ namespace A10
         public override bool Equals(object obj)
         {
             var mat = obj as Matrix<_Type>;
+            if (mat == null)
+                return false;
             return this.Equals(mat);
 
         }

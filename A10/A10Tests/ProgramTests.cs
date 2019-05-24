@@ -11,10 +11,6 @@ namespace A10.Tests
     [TestClass()]
     public class ProgramTests
     {
-        [TestMethod()]
-        public void MainTest()
-        {
-            Assert.Fail();
-        }
+       
     }
 }
