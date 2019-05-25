@@ -215,18 +215,18 @@ namespace A10.Tests
         [TestMethod]
         public void MultiAddTest()
         {
-            Matrix<int> m1 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m1 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { 0, 1},
                 new Vector<int>(2) { 2, -1},
             };
-            Matrix<int> m2 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m2 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { -1, 1},
                 new Vector<int>(2) { 1, 2},
             };
 
-            Matrix<int> m3 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m3 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { 0, 1},
                 new Vector<int>(2) { 1, 0},
@@ -241,18 +241,18 @@ namespace A10.Tests
         [TestMethod]
         public void MultiMultiplyTest()
         {
-            Matrix<int> m1 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m1 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { 0, 1},
                 new Vector<int>(2) { 2, -1},
             };
-            Matrix<int> m2 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m2 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { -1, 1},
                 new Vector<int>(2) { 1, 2},
             };
 
-            Matrix<int> m3 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m3 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { 0, 1},
                 new Vector<int>(2) { 1, 0},
@@ -267,18 +267,18 @@ namespace A10.Tests
         [TestMethod]
         public void MultiExpressionTest()
         {
-            Matrix<int> m1 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m1 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { 0, 1},
                 new Vector<int>(2) { 2, -1},
             };
-            Matrix<int> m2 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m2 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { -1, 1},
                 new Vector<int>(2) { 1, 2},
             };
 
-            Matrix<int> m3 = new Matrix<int>(2, 2)
+            SquareMatrix<int> m3 = new SquareMatrix<int>(2)
             {
                 new Vector<int>(2) { 0, 1},
                 new Vector<int>(2) { 1, 0},
