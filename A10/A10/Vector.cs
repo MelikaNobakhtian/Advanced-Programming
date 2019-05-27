@@ -70,6 +70,7 @@ namespace A10
             this.Data = list.ToArray<_Type>();
         }
 
+
         /// <summary>
         /// Accessor for data elements
         /// </summary>
@@ -213,19 +214,10 @@ namespace A10
 
         public override string ToString()
         {
-            string vector = null;
-            for (int i = 0; i < this.Size; i++)
-            {
-                if (i == this.Size - 1)
-                {
-                    vector += $"{this[i]}";
-                    break;
-                }
-                vector += $"{this[i]},";
+            string vec = String.Join(",", Data.ToArray());
 
-            }
-
-            return $"[{vector}]";
+            return $"[{vec}]";
+           
         }
 
         public IEnumerator<_Type> GetEnumerator()

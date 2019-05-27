@@ -156,20 +156,12 @@ namespace A10
 
         public override string ToString()
         {
-            string tostr = "[\n";
-            for (int i = 0; i < RowCount; i++)
-            {
-                if (i == RowCount - 1)
-                {
-                    tostr += $"{Rows[i].ToString()}\n";
-                    break;
-                }
-                tostr += $"{Rows[i].ToString()},\n";
+            List<string> vec = new List<string>();
+            foreach (var v in Rows)
+                vec.Add(v.ToString());
+            string matrix = String.Join(",\n",vec );
 
-            }
-            tostr += "]";
-            return tostr;
-
+            return $"[\n{ matrix}\n]";
         }
 
         protected Vector<_Type> GetColumn(int col) =>
