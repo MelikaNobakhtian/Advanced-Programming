@@ -154,15 +154,8 @@ namespace A10
 
         }
 
-        public override string ToString()
-        {
-            List<string> vec = new List<string>();
-            foreach (var v in Rows)
-                vec.Add(v.ToString());
-            string matrix = String.Join(",\n",vec );
-
-            return $"[\n{ matrix}\n]";
-        }
+        public override string ToString() => $"[\n{ String.Join(",\n", Rows.Select(s => s.ToString())) }\n]";
+        
 
         protected Vector<_Type> GetColumn(int col) =>
         new Vector<_Type>(GetColumnEnumerator(col));

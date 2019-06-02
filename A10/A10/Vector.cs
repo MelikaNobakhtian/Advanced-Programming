@@ -214,7 +214,7 @@ namespace A10
 
         public override string ToString()
         {
-            string vec = String.Join(",", Data.ToArray());
+            string vec = String.Join(",", Data);
 
             return $"[{vec}]";
            
