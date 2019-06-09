@@ -23,7 +23,7 @@ namespace A13
         public void Dispose()
         {
             
-            GC.SuppressFinalize(this);
+            
         }
 
         public void Register(Action notify)
