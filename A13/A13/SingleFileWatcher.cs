@@ -13,17 +13,19 @@ namespace A13
 
         public SingleFileWatcher(string fileName)
         {
-            var path = fileName.Split('\\').ToList();
-            var name = path[path.Count - 1];
-            string address = fileName.Remove(fileName.Length - 10);
+            //    var path = fileName.Split('\\').ToList();
+            //    var name = path[path.Count - 1];
+            //    string address = fileName.Remove(fileName.Length - 10);
+            FileInfo DisposeProblem = new FileInfo(fileName);
 
-            Watcher = new FileSystemWatcher(address,name);
+
+            Watcher = new FileSystemWatcher(DisposeProblem.DirectoryName,DisposeProblem.Name);
         }
 
         public void Dispose()
         {
-            
-            
+
+            Watcher.Dispose();
         }
 
         public void Register(Action notify)
