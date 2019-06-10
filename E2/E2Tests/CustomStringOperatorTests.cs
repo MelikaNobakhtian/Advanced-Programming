@@ -29,21 +29,22 @@ namespace E2.Tests
         [TestMethod()]
         public void StringExplicitOperatorTest()
         {
-            Assert.Inconclusive();
            
 
-            //MyString s1 = (MyString) "I love you";
-            //Assert.AreEqual(s1, "I love you");
-            //Assert.IsTrue(s1 == "I love you");
 
-            //MyString s2 = (MyString)"You love me";
-            //Assert.AreEqual(s2, "You love me");
-            //Assert.IsTrue(s2 == "You love me");
+            MyString s1 = (MyString)"I love you";
+            Assert.AreEqual(s1, "I love you");
+            Assert.IsTrue(s1 == "I love you");
+
+            MyString s2 = (MyString)"You love me";
+            Assert.AreEqual(s2, "You love me");
+            Assert.IsTrue(s2 == "You love me");
 
 
-            //Assert.AreNotEqual(s1, s2);
-            //Assert.IsFalse(s1 == s2);
-            
+            Assert.AreNotEqual(s1, s2);
+
+            Assert.IsFalse(s1 == s2);
+
         }
 
         /// <summary>
@@ -58,8 +59,8 @@ namespace E2.Tests
         [TestMethod()]
         public void StringReverseExplicitOperatorTest()
         {
-            Assert.Inconclusive();
-            /* UnComment
+            //Assert.Inconclusive();
+            
 
             MyString s1 = new MyString("I love you");
             string ss1 = (string)s1;
@@ -74,7 +75,7 @@ namespace E2.Tests
 
             Assert.AreNotEqual(ss1, ss2);
             Assert.IsFalse(ss1 == ss2);
-            */
+            
         }
 
         /// <summary>
@@ -87,12 +88,12 @@ namespace E2.Tests
         [TestMethod]
         public void StringPlusPlusOperatorTest()
         {
-            Assert.Inconclusive();
-            /* UnComment
+            
+          
 
             MyString s = (MyString)"I love you";
-            Assert.AreEqual(s++, "I LOVE YOU");
-            */
+            Assert.AreEqual(++s, "I LOVE YOU");
+            
         }
 
         /// <summary>
@@ -105,12 +106,12 @@ namespace E2.Tests
         [TestMethod]
         public void StringMinusMinusOperatorTest()
         {
-            Assert.Inconclusive();
-            /* UnComment
+            //Assert.Inconclusive();
+           
 
             MyString s = (MyString)"YOU LOVE ME";
-            Assert.AreEqual(s--, "you love me");
-            */
+            Assert.AreEqual(--s, "you love me");
+            
         }
 
     }

@@ -43,14 +43,17 @@ namespace E2.Linq
 
         public MessageData MostRepliedMessage()
         {
+            MessageData result=null;
            var first= Messages.Where(a => a.ReplyMessageId != null)
                 .GroupBy(g => g.ReplyMessageId)
                 .OrderByDescending(d => d.Count())
                 .Select(l => l.Key)
                 .First();
-            var result = Messages.Where(a => a.Id == first);
-            var h = result as MessageData;
-            return h ;
+            foreach (var ma in Messages)
+                if (ma.Id == first)
+                    result = ma;
+
+            return result;
         }
 
         public Tuple<string, int>[] MostPostedMessagePersons()
@@ -73,11 +76,24 @@ namespace E2.Linq
 
         public Tuple<string, int>[] MostActivesAtMidNight()
         {
-            throw new NotImplementedException();
+           var t= Messages.Where(w => 0 <= w.DateTime.Hour && w.DateTime.Hour <= 4)
+               .GroupBy(g => g.Author)
+               .Select(l => new { author = l.Key, count = l.Count() })
+               .OrderByDescending(o => o.count)
+               .Take(5).
+               ToList();
+            List<Tuple<string, int>> z = new List<Tuple<string, int>>();
+            for (int i = 0; i < 5; i++)
+            {
+                z.Add(new Tuple<string, int>(t[i].author, t[i].count));
+            }
+
+            return z.ToArray();
         }
 
         public string StudentWithMostUnansweredQuestions()
         {
+
             throw new NotImplementedException();
         }
     }

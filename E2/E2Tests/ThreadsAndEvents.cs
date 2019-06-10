@@ -80,7 +80,7 @@ namespace E2.Tests
         [TestMethod()]
         public void DuplicateNumberAddedTest()
         {
-            Assert.Inconclusive();
+           // Assert.Inconclusive();
             DuplicateNumberDetector detector = new DuplicateNumberDetector();
             List<int> dups = new List<int>();
             detector.DuplicateNumberAdded += (n) => dups.Add(n);

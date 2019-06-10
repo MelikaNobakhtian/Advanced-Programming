@@ -45,7 +45,7 @@ namespace E2.Tests
         {
             Assert.Inconclusive();
             MessageData actual = Instance.MostRepliedMessage();
-
+            //پاس نمیشه در حالیکه فکر کنم درست باشه DateTimeسه مورد اول پاس میشن ولی قسمت آخر که مربوط به 
             Assert.AreEqual(expected: 1878110358, actual: actual.Author.GetHashCode());
             Assert.AreEqual(expected: null, actual: actual.ReplyMessageId?.GetHashCode());
             Assert.AreEqual(expected: -1000177133, actual: actual.Content?.GetHashCode());
@@ -109,7 +109,8 @@ namespace E2.Tests
         [TestMethod()]
         public void MostActiveAtMidNightTest()
         {
-            Assert.Inconclusive();
+
+            //Assert.Inconclusive();
             Tuple<string, int>[] actual = Instance.MostActivesAtMidNight();
             Tuple<int, int>[] expected = new[]
             {

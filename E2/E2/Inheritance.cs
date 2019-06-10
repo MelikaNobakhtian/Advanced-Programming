@@ -16,7 +16,7 @@ namespace E2
         public abstract int LunchRate { get; }
 
 
-        public virtual string Name { get;  }
+        public virtual string Name { get; set; }
         public bool IsFemale { get; set; }
     }
 
@@ -44,23 +44,19 @@ namespace E2
         }
     }
 
-    //public class Teacher : Employee
-    //{
-    //    private string v1;
-    //    private bool v2;
+    public class Teacher : Employee
+    {
+        public override int LunchRate { get; }
+        public Teacher(string a, bool b) :base(a,b)
+        {
+            IsFemale = b;
+            LunchRate = 10000;
+            Name = "استاد " + a;
+        }
 
-    //    public Teacher(string v1, bool v2)
-    //    {
-    //        this.Name= v1;
-    //        this.v2 = v2;
-    //    }
-
-    //    public override int LunchRate { get; }
-       
-
-    //    public override int CalculateSalary(int v)
-    //    {
-    //        return v * 20000;
-    //    }
-    //}
+        public override int CalculateSalary(int v)
+        {
+            return v * 20000;
+        }
+    }
 }

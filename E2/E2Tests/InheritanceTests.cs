@@ -147,24 +147,25 @@ namespace E2.Tests
         /////  می‌کند که حقوق استاد را برابر ساعتی ۲۰۰۰۰ تومان حساب می‌کند.
         ///// این کلاس را بگونه‌ای پیاده‌سازی کنید که تست زیر پاس شود.
         ///// </summary>
-        //[TestMethod()]
-        //public void TeacherTest()
-        //{
-           
+        [TestMethod()]
+        public void TeacherTest()
+        {
+            //Assert.Inconclusive();
 
-        //    Person p = new Teacher("محمد رضا شجریان", false);
-        //    Assert.IsFalse(p.IsFemale);
-        //    Assert.AreEqual("استاد محمد رضا شجریان", p.Name);
-        //    Assert.AreEqual(p.LunchRate, 10000);
 
-        //    Employee e = p as Employee;
-        //    Assert.AreEqual(200_000, e.CalculateSalary(10));
-        //    Assert.AreEqual(e.LunchRate, 10000);
+            Person p = new Teacher("محمد رضا شجریان", false);
+            Assert.IsFalse(p.IsFemale);
+            Assert.AreEqual("استاد محمد رضا شجریان", p.Name);
+            Assert.AreEqual(p.LunchRate, 10000);
 
-        //    Teacher t = p as Teacher;
-        //    Assert.AreEqual(200_000, e.CalculateSalary(10));
-        //    Assert.AreEqual(t.LunchRate, 10000);
+            Employee e = p as Employee;
+            Assert.AreEqual(200_000, e.CalculateSalary(10));
+            Assert.AreEqual(e.LunchRate, 10000);
 
-        //}
+            Teacher t = p as Teacher;
+            Assert.AreEqual(200_000, e.CalculateSalary(10));
+            Assert.AreEqual(t.LunchRate, 10000);
+
+        }
     }
 }

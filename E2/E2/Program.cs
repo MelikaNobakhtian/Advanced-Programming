@@ -10,7 +10,6 @@ namespace E2
     {
         public static void Main(string[] args)
         {
-            
         }
     }
 }
