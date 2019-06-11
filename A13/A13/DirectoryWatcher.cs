@@ -9,7 +9,7 @@ namespace A13
     public class DirectoryWatcher : IDisposable
     {
         private FileSystemWatcher Watcher;
-        Action<string> test;
+        Action<string> MyAction;
         public DirectoryWatcher(string dir)
         {
             Watcher = new FileSystemWatcher(dir);
@@ -17,48 +17,48 @@ namespace A13
 
         public void Dispose()
         {
-            
+            Watcher.Dispose();
         }
 
-        public void Register(Action<string> notifyMe, ObserverType create)
+        public void Register(Action<string> notifyMe, ObserverType status)
         {
             Watcher.EnableRaisingEvents = true;
-            if (create == ObserverType.Create)
+            if (status == ObserverType.Create)
             {
                 Watcher.Created += Watcher_Created;
-                test += notifyMe;
+                MyAction += notifyMe;
             }
 
-            if (create == ObserverType.Delete)
+            if (status == ObserverType.Delete)
             {
                 Watcher.Deleted += Watcher_Deleted;
-                test += notifyMe;
+                MyAction += notifyMe;
             }
            
         }
 
         private void Watcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            test(e.FullPath);
+            MyAction(e.FullPath);
         }
 
         private void Watcher_Created(object sender, FileSystemEventArgs e)
         {
-            test(e.FullPath);
+            MyAction(e.FullPath);
         }
 
-        public void Unregister(Action<string> notifyMe, ObserverType delete)
+        public void Unregister(Action<string> notifyMe, ObserverType status)
         {
-            if (delete == ObserverType.Create)
+            if (status == ObserverType.Create)
             {
-                test -= notifyMe;
+                MyAction -= notifyMe;
                 Watcher.Created += Watcher_Created;
                 
             }
 
-            if (delete == ObserverType.Delete)
+            if (status == ObserverType.Delete)
             {
-                test -= notifyMe;
+                MyAction -= notifyMe;
                 Watcher.Deleted += Watcher_Deleted;
                 
             }

@@ -11,7 +11,7 @@ namespace A13
         {
             Stopwatch start = new Stopwatch();
             start.Start();
-            foreach(var action in actions)
+            foreach (var action in actions)
             {
                 Task task = new Task(action);
                 task.Start();
@@ -41,34 +41,22 @@ namespace A13
 
         public static long CallParallelThreadSafe(int count, params Action[] actions)
         {
-            object lockobject="actions";
+            object lockobject = "actions";
             List<Task> mytasks = new List<Task>();
             Stopwatch start = new Stopwatch();
             start.Start();
-           
-  
-               
-                    Parallel.ForEach(actions, action => {
-                        for (int i = 0; i < count; i++)
-                        {
-
-                            lock (lockobject)
-                            {
-                                Task task1 = Task.Run(action);
-                               
-                                    mytasks.Add(task1);
-                                
-                                task1.Wait();
-                            }
-
-                            
-                        }
-
-                    });
-                
-            
-           
-
+            Parallel.ForEach(actions, action =>
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    lock (lockobject)
+                    {
+                        Task task1 = Task.Run(action);
+                        mytasks.Add(task1);
+                        task1.Wait();
+                    }
+                }
+            });
             Task.WaitAll(mytasks.ToArray());
             start.Stop();
             return start.ElapsedMilliseconds;
@@ -83,12 +71,9 @@ namespace A13
             {
                 Task task = Task.Run(action);
                 await task;
-
             }
             start.Stop();
             return start.ElapsedMilliseconds;
-
-            
         }
 
         public static async Task<long> CallParallelAsync(params Action[] actions)
@@ -101,7 +86,7 @@ namespace A13
                 Task task = new Task(action);
                 task.Start();
                 mytasks.Add(task);
-                
+
             }
             await Task.WhenAll(mytasks.ToArray());
             start.Stop();
@@ -114,25 +99,19 @@ namespace A13
             List<Task> mytasks = new List<Task>();
             Stopwatch start = new Stopwatch();
             start.Start();
-
-
-
-            Parallel.ForEach(actions, action => {
-                
-                    for (int i = 0; i < count; i++)
-                    {
-                    lock (actions)
+            foreach(var action in actions) { 
+                for (int i = 0; i < count; i++)
+                {
+                    lock (lockobject)
                     {
                         Task task1 = new Task(action);
                         task1.Start();
                         mytasks.Add(task1);
-                        
                     }
+                    await Task.WhenAll(mytasks.ToArray());
                 }
-            });
-
-
-            await Task.WhenAll(mytasks.ToArray());
+            }
+          
             start.Stop();
             return start.ElapsedMilliseconds;
         }

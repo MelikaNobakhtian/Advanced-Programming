@@ -24,7 +24,7 @@ namespace A13
         public void Start()
         {
             ReiminderTask.Start();
-            Thread.Sleep(Delay);
+            Task.Delay(Delay);
         }
     }
 }

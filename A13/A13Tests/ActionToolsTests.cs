@@ -274,22 +274,22 @@ namespace EventDelegateThread.Tests
         /// استفاده کنید.
         /// برای جزئیات بیشتر متد تست را مطالعه کنید.
         /// </summary>
-        //[TestMethod()]
-        //public void CallParallelThreadSafeAsyncTest()
-        //{
-        //    int? sum = 0;
-        //    Stopwatch sw = Stopwatch.StartNew();
-        //    var result = ActionTools.CallParallelThreadSafeAsync(100,
-        //        () => { sum += 2; Task.Delay(10).Wait(); },
-        //        () => { sum -= 1; Task.Delay(10).Wait(); }
-        //        );
-        //    Assert.IsTrue(sw.ElapsedMilliseconds < TestTimingTolerance);
+        [TestMethod()]
+        public void CallParallelThreadSafeAsyncTest()
+        {
+            int? sum = 0;
+            Stopwatch sw = Stopwatch.StartNew();
+            var result = ActionTools.CallParallelThreadSafeAsync(100,
+                () => { sum += 2; Task.Delay(10).Wait(); },
+                () => { sum -= 1; Task.Delay(10).Wait(); }
+                );
+            Assert.IsTrue(sw.ElapsedMilliseconds < TestTimingTolerance);
 
-        //    result.Wait();
-        //    var elapsed = sw.ElapsedMilliseconds;
-        //    Assert.IsTrue(Math.Abs(result.Result - elapsed) < TestTimingTolerance);
-        //    Assert.AreEqual(100, sum);
-        //}
+            result.Wait();
+            var elapsed = sw.ElapsedMilliseconds;
+            Assert.IsTrue(Math.Abs(result.Result - elapsed) < TestTimingTolerance);
+            Assert.AreEqual(100, sum);
+        }
 
     }
 }
