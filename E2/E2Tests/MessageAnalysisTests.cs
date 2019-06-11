@@ -21,11 +21,11 @@ namespace E2.Tests
     /// کلاس‌های لازم برای پارس کردن مشابه با تمرین
     /// ۱۲ به شما داده شده است.
     /// </summary>
-    [DeploymentItem("chats.csv")]
+    
     [TestClass()]
     public class MessageAnalysisTests
     {
-        private const string CSV_FILE_PATH = @"chats.csv";
+        private const string CSV_FILE_PATH = @"../../chats.csv";
         private MessageAnalysis _instance;
 
         public MessageAnalysis Instance =>
