@@ -4,33 +4,16 @@ namespace A11
 {
     public class CheckingAccount : Account
     {
-        public double transactionFee { get; set; }
+        public double TransactionFee { get; set; }
 
         public CheckingAccount(int balance, int transactionFee) : base(balance)
         {
-            this.transactionFee = transactionFee;
+            this.TransactionFee = transactionFee;
         }
 
-        public override void Credit(double amount)
-        {
-            if (amount < 0)
-                throw new ArgumentException("Credit amount must be positive");
-            this.Balance += (amount - transactionFee);
-        }
+        public override void Credit(double amount) => base.Credit(amount - TransactionFee);
 
-        public override bool Debit(double amount)
-        {
-            if (amount <= this.Balance)
-            {
-                this.Balance -= (amount + transactionFee);
-                return true;
-            }
+        public override bool Debit(double amount) => base.Debit(amount + TransactionFee);
 
-            else
-            {
-                Console.WriteLine("Debit amount exceeded account balance.");
-                return false;
-            }
-        }
     }
 }
