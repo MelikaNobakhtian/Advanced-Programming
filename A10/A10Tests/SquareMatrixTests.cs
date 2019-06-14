@@ -28,6 +28,19 @@ namespace A10.Tests
                         m[i, j]);
         }
 
+        [TestMethod()]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void SquareMatrixCostructorExceptionTest()
+        {
+            List<Vector<int>> vectors = new List<Vector<int>>()
+            {
+                new Vector<int>(3){1,2,3},
+                new Vector<int>(3){4,5,6}
+            };
+
+            var mat = new SquareMatrix<int>(vectors);
+        }
+
         [TestMethod]
         public void MultiplyTest()
         {

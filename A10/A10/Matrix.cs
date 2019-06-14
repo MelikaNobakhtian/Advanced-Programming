@@ -154,23 +154,8 @@ namespace A10
 
         }
 
-        public override string ToString()
-        {
-            string tostr = "[\n";
-            for (int i = 0; i < RowCount; i++)
-            {
-                if (i == RowCount - 1)
-                {
-                    tostr += $"{Rows[i].ToString()}\n";
-                    break;
-                }
-                tostr += $"{Rows[i].ToString()},\n";
-
-            }
-            tostr += "]";
-            return tostr;
-
-        }
+        public override string ToString() => $"[\n{ String.Join(",\n", Rows.Select(s => s.ToString())) }\n]";
+        
 
         protected Vector<_Type> GetColumn(int col) =>
         new Vector<_Type>(GetColumnEnumerator(col));
