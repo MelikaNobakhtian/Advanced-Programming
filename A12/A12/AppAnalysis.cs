@@ -88,13 +88,11 @@ namespace A12
             var firstmean = Apps
                           .Where(a => a.Category == "PHOTOGRAPHY")
                           .OrderByDescending(o => o.Rating)
-                          .Take(Apps.Where(s => s.Category == "PHOTOGRAPHY").Count() / 2);
-            var topquarter = firstmean.OrderByDescending(o => o.Rating)
-                           .Take(firstmean.Where(s => s.Category == "PHOTOGRAPHY").Count() / 2)
-                           .Last()
-                           .Rating;
+                          .Take(Apps.Where(s => s.Category == "PHOTOGRAPHY").Count() / 4)
+                          .Last()
+                          .Rating;
 
-            return topquarter;
+            return firstmean;
         }
 
         public Tuple<string, string> ExtremeMeanUpdateElapse(DateTime today)
@@ -119,15 +117,14 @@ namespace A12
 
         public List<string> XMostProfitables(int x)
         {
-            var g = Apps
+            var mostprofit = Apps
              .Where(a => a.Price != 0)
-             .Select(s => new { AppName = s.Name, AppRating = s.Rating, Profit = (s.Installs) * (s.Price) })
-             .OrderByDescending(o => o.Profit)
+             .OrderByDescending(s => (s.Installs) * (s.Price))
              .Take(x)
-             .Select(b => b.AppName)
+             .Select(b => b.Name)
              .ToList();
 
-            return g;
+            return mostprofit;
         }
 
         public List<string> XCoolestApps(int x, Func<AppData, double> criteria)
