@@ -5,16 +5,18 @@ using System.Linq;
 namespace A13
 {
 
-    public class SingleFileWatcher: IDisposable
+    public class SingleFileWatcher : IDisposable
     {
         private FileSystemWatcher Watcher;
         Action MyAction;
-        
+
 
         public SingleFileWatcher(string fileName)
         {
             FileInfo DisposeProblem = new FileInfo(fileName);
-            Watcher = new FileSystemWatcher(DisposeProblem.DirectoryName,DisposeProblem.Name);
+            Watcher = new FileSystemWatcher(DisposeProblem.DirectoryName, DisposeProblem.Name);
+            Watcher.EnableRaisingEvents = true;
+            Watcher.Changed += Watcher_Changed;
         }
 
         public void Dispose()
@@ -24,10 +26,7 @@ namespace A13
 
         public void Register(Action notify)
         {
-            Watcher.EnableRaisingEvents = true;
             MyAction += notify;
-            Watcher.Changed += Watcher_Changed;
-            
         }
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
@@ -38,7 +37,7 @@ namespace A13
         public void Unregister(Action notify1)
         {
             MyAction -= notify1;
-            Watcher.Changed += Watcher_Changed;
+
         }
     }
 }

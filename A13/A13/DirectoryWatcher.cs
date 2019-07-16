@@ -13,6 +13,9 @@ namespace A13
         public DirectoryWatcher(string dir)
         {
             Watcher = new FileSystemWatcher(dir);
+            Watcher.EnableRaisingEvents = true;
+            Watcher.Created += Watcher_Created;
+            Watcher.Deleted += Watcher_Deleted;
         }
 
         public void Dispose()
@@ -22,19 +25,17 @@ namespace A13
 
         public void Register(Action<string> notifyMe, ObserverType status)
         {
-            Watcher.EnableRaisingEvents = true;
+
             if (status == ObserverType.Create)
             {
-                Watcher.Created += Watcher_Created;
                 MyAction += notifyMe;
             }
 
             if (status == ObserverType.Delete)
             {
-                Watcher.Deleted += Watcher_Deleted;
                 MyAction += notifyMe;
             }
-           
+
         }
 
         private void Watcher_Deleted(object sender, FileSystemEventArgs e)
@@ -52,15 +53,11 @@ namespace A13
             if (status == ObserverType.Create)
             {
                 MyAction -= notifyMe;
-                Watcher.Created += Watcher_Created;
-                
             }
 
             if (status == ObserverType.Delete)
             {
                 MyAction -= notifyMe;
-                Watcher.Deleted += Watcher_Deleted;
-                
             }
         }
     }

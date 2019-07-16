@@ -14,17 +14,19 @@ namespace A13
         {
             this.Msg = msg;
             this.Delay = delay;
-            ReiminderTask = new Task((object o) => Reminder(o as string), Msg);
         }
-
-        
 
         public event Action<string> Reminder;
 
         public void Start()
         {
+            ReiminderTask = new Task((object o) =>
+            {
+                Task.Delay(Delay);
+                Reminder(o as string);
+            }, Msg);
             ReiminderTask.Start();
-            Task.Delay(Delay);
+
         }
     }
 }

@@ -13,15 +13,19 @@ namespace A13
         {
             this.Msg = msg;
             this.Delay = delay;
-            ReiminderThread = new Thread(()=>Reminder(Msg));
         }
 
         public event Action<string> Reminder;
 
         public void Start()
         {
+            ReiminderThread = new Thread(() =>
+            {
+                Reminder(Msg);
+                Thread.Sleep(Delay);
+            });
             ReiminderThread.Start();
-            Thread.Sleep(Delay);
+
         }
     }
 }
