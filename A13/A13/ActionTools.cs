@@ -27,9 +27,7 @@ namespace A13
             List<Task> mytasks = new List<Task>();
             foreach (var action in actions)
             {
-                Task task = new Task(action);
                 mytasks.Add(Task.Run(() => action()));
-                task.Start();
             }
             Task.WaitAll(mytasks.ToArray());
             start.Stop();
