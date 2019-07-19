@@ -47,7 +47,7 @@ namespace P1.Tests
         [TestMethod()]
         public void DetermineSinSpanMinTest()
         {
-            Function sinFunction = new Function("sin(x)");
+            Function sinFunction = new Function("sinx");
             Func<double, double> series =
                 TaylorSeries.MakeTaylorSeries(4, 0, 1, 0);
             var minspan = TaylorSeries.DetermineSinSpanMin(sinFunction.ParsedFunc, series, 0);
@@ -57,7 +57,7 @@ namespace P1.Tests
         [TestMethod()]
         public void DetermineSinSpanMaxTest()
         {
-            Function sinFunction = new Function("sin(x)");
+            Function sinFunction = new Function("sinx");
             Func<double, double> series =
                 TaylorSeries.MakeTaylorSeries(4, 0, 1, 0);
             var maxspan = TaylorSeries.DetermineSinSpanMax(sinFunction.ParsedFunc, series, 0);
