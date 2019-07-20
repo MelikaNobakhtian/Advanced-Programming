@@ -13,10 +13,7 @@ namespace A13
             start.Start();
             foreach (var action in actions)
             {
-                Task task = new Task(action);
-                task.Start();
-                task.Wait();
-
+                action();
             }
             start.Stop();
             return start.ElapsedMilliseconds;
@@ -30,9 +27,7 @@ namespace A13
             List<Task> mytasks = new List<Task>();
             foreach (var action in actions)
             {
-                Task task = new Task(action);
-                mytasks.Add(task);
-                task.Start();
+                mytasks.Add(Task.Run(() => action()));
             }
             Task.WaitAll(mytasks.ToArray());
             start.Stop();
@@ -45,18 +40,22 @@ namespace A13
             List<Task> mytasks = new List<Task>();
             Stopwatch start = new Stopwatch();
             start.Start();
-            Parallel.ForEach(actions, action =>
+            foreach (var action in actions)
             {
-                for (int i = 0; i < count; i++)
+                mytasks.Add(Task.Run(() =>
                 {
-                    lock (lockobject)
+                    for (int i = 0; i < count; i++)
                     {
-                        Task task1 = Task.Run(action);
-                        mytasks.Add(task1);
-                        task1.Wait();
+                        lock (lockobject)
+                        {
+                            action();
+                        }
+
                     }
-                }
-            });
+
+                }));
+
+            }
             Task.WaitAll(mytasks.ToArray());
             start.Stop();
             return start.ElapsedMilliseconds;
@@ -69,8 +68,7 @@ namespace A13
             start.Start();
             foreach (var action in actions)
             {
-                Task task = Task.Run(action);
-                await task;
+                await Task.Run(action);
             }
             start.Stop();
             return start.ElapsedMilliseconds;
@@ -83,9 +81,8 @@ namespace A13
             List<Task> mytasks = new List<Task>();
             foreach (var action in actions)
             {
-                Task task = new Task(action);
-                task.Start();
-                mytasks.Add(task);
+
+                mytasks.Add(Task.Run(() => { action(); }));
 
             }
             await Task.WhenAll(mytasks.ToArray());
@@ -99,19 +96,21 @@ namespace A13
             List<Task> mytasks = new List<Task>();
             Stopwatch start = new Stopwatch();
             start.Start();
-            foreach(var action in actions) { 
+            foreach (var action in actions)
+            {
                 for (int i = 0; i < count; i++)
                 {
-                    lock (lockobject)
+                    mytasks.Add(Task.Run(() =>
                     {
-                        Task task1 = new Task(action);
-                        task1.Start();
-                        mytasks.Add(task1);
-                    }
-                    await Task.WhenAll(mytasks.ToArray());
+                        lock (lockobject)
+                        {
+                            action();
+                        }
+                    }));
+
                 }
             }
-          
+            await Task.WhenAll(mytasks.ToArray());
             start.Stop();
             return start.ElapsedMilliseconds;
         }

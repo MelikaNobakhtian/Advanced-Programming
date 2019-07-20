@@ -5,7 +5,7 @@ namespace A13
 {
     public class SingleReminderThreadPool : ISingleReminder
     {
-       
+
         public string Msg { get; }
         public int Delay { get; }
 
@@ -15,13 +15,16 @@ namespace A13
             this.Delay = delay;
         }
 
-       
         public event Action<string> Reminder;
 
         public void Start()
         {
-            ThreadPool.QueueUserWorkItem((object o) => Reminder(o as string), Msg);
-            Thread.Sleep(Delay);
+            ThreadPool.QueueUserWorkItem((object o) =>
+            {
+                Reminder(o as string);
+                Thread.Sleep(Delay);
+            }, Msg);
+
         }
     }
 }
